@@ -1,8 +1,11 @@
+import DOMPurify from "dompurify";
+
 export type Comment = {
   content: string;
   userDisplayName: string;
-  createdAt: Date;
+  createdAt: string;
   commentUrl: string;
+  avaterUrl: string;
 };
 export async function fetchCommentList(
   authorPostAPIEndpointUrl: string
@@ -19,14 +22,27 @@ export async function fetchCommentList(
 }
 
 export function parseComment(comment: any): Comment {
-  const createdAt = new Date(Date.parse(comment["created_at"]));
-  const content = comment["content"];
-  const userDisplayName = comment["account"]["display_name"];
-  const commentUrl = comment["url"];
+  const createdAt = comment["created_at"]; // new Date(Date.parse(comment["created_at"]));
+
+  // Allow safe HTML
+  const content = DOMPurify.sanitize(comment["content"]);
+
+  // Don't allow HTML. Only plain text
+  const userDisplayName = getTextFromPossiblyDirtyHtml(
+    comment["account"]["display_name"]
+  );
+  const commentUrl = getTextFromPossiblyDirtyHtml(comment["url"]);
+  const avaterUrl = getTextFromPossiblyDirtyHtml(comment["account"]["avatar_static"])
+
   return {
     content,
     createdAt,
     userDisplayName,
     commentUrl,
+    avaterUrl,
   };
+}
+function getTextFromPossiblyDirtyHtml(dirty: string) {
+  // TODO: implement
+  return dirty;
 }

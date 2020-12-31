@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Comment, fetchCommentList } from "./comment";
-import DOMPurify from "dompurify";
 
 type Props = {
   url: string;
@@ -31,12 +30,18 @@ type CardProps = {
 };
 function CommentCard(props: CardProps) {
   const comment = props.comment;
+  console.log(`avater: ${comment.avaterUrl}`)
   return (
-    <div>
-      <span>{DOMPurify.sanitize(comment.userDisplayName)}</span>
+    <div className="fediverse-commeent">
+      <img src={comment.avaterUrl} />
+      <span className="display-name">
+        {comment.userDisplayName}
+      </span>
+      <a className="created-at" href={comment.commentUrl}>{comment.createdAt}</a>
       <p
+        className="comment-content"
         dangerouslySetInnerHTML={{
-          __html: DOMPurify.sanitize(comment.content),
+          __html: comment.content,
         }}
       ></p>
     </div>

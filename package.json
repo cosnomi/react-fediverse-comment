@@ -1,5 +1,5 @@
 {
-  "name": "fediverse-comment",
+  "name": "react-fediverse-comment",
   "version": "1.0.0",
   "main": "index.js",
   "author": "cosnomi",
@@ -11,9 +11,14 @@
     "@types/react": "^16.12.0",
     "typescript": "^4.1.3"
   },
-  "dependencies": {
-    "dompurify": "^2.2.6",
+  "peerDependencies": {
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
+  },
+  "dependencies": {
+    "dompurify": "^2.2.6"
+  },
+  "scripts": {
+    "prepare": "npx tsc"
   }
 }

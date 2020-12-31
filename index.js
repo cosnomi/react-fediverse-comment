@@ -1,3 +1,1 @@
-import { FediverseCommentSection } from "./src/FediverseComment";
-
-export { FediverseCommentSection };
+export { FediverseCommentSection } from "./dist/FediverseComment";
