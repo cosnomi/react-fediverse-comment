@@ -1,0 +1,40 @@
+.fediverse-comment {
+  background-color: white;
+  border: 1px solid lightgray;
+  padding: 10px;
+  width: 90%;
+  margin: 10px auto;
+}
+.fediverse-comment.root-comment {
+  border: 2px solid blue;
+}
+
+.fediverse-comment .user-info {
+  display:flex;
+  flex-direction:row;
+  height: 30px;
+  line-height: 30px;
+}
+
+.fediverse-comment .comment-content {
+  word-break: break-word;
+  padding-left: 30px;
+}
+
+.fediverse-comment .display-name {
+  font-size: 1.2em;
+  margin: auto 0.5em;
+}
+
+.fediverse-comment .created-at {
+  font-size: 0.8em;
+}
+
+.fediverse-comment .display-name.author {
+  border: 1px solid blue;
+}
+
+.fediverse-comment .avatar {
+  width: 30px;
+  height: 30px;
+}
