@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Comment, fetchCommentList } from "./comment";
-import DOMPurify from "dompurify";
 
 type Props = {
-  url: string;
+  apiRootEndpoint: string;
+  authorId: string;
+  articleUrl: string;
 };
 
 export function FediverseCommentSection(props: Props) {
@@ -11,34 +12,75 @@ export function FediverseCommentSection(props: Props) {
   useEffect(() => {
     (async () => {
       if (!comments) {
-        setComments(await fetchCommentList(props.url));
+        const comments = await fetchCommentList(
+          props.apiRootEndpoint,
+          props.authorId,
+          props.articleUrl
+        );
+        //.filter((c) => c.visibility === "public");
+        setComments(comments);
       }
     })();
   });
-  return (
-    <div>
-      {comments
-        ? comments.map((c) => {
+  if (comments) {
+    if (comments.length > 0) {
+      return (
+        <div>
+          {comments.map((c) => {
             return <CommentCard comment={c} />;
-          })
-        : "Loading comments"}
-    </div>
-  );
+          })}
+        </div>
+      );
+    } else {
+      return <div>No comments.</div>;
+    }
+  } else {
+    return (
+      <div>
+        Loading comments (if it takes so long, there's something wrong in
+        fetching comments.)
+      </div>
+    );
+  }
 }
 
 type CardProps = {
   comment: Comment;
+  articleAuthorUserUrl?: string;
 };
 function CommentCard(props: CardProps) {
   const comment = props.comment;
+  const isArticleAuthor = props.comment.userUrl === props.articleAuthorUserUrl;
+  console.log(`avater: ${comment.avaterUrl}`);
   return (
-    <div>
-      <span>{DOMPurify.sanitize(comment.userDisplayName)}</span>
+    <div
+      className={`fediverse-comment${comment.isRoot ? " root-comment" : ""}`}
+    >
+      <div className="user-info">
+        <a href={comment.userUrl}>
+          <img className="avatar" src={comment.avaterUrl} />
+        </a>
+        <a
+          className={`display-name${isArticleAuthor ? " author" : ""}`}
+          href={comment.userUrl}
+        >
+          {comment.userDisplayName}
+        </a>
+        <a className="created-at" href={comment.commentUrl}>
+          {comment.createdAt}
+        </a>
+      </div>
       <p
+        className="comment-content"
         dangerouslySetInnerHTML={{
-          __html: DOMPurify.sanitize(comment.content),
+          __html: comment.content,
         }}
       ></p>
+      {comment.isRoot && (
+        <a className="comment-button" href={comment.commentUrl}>
+          You can comment on this article by replying this fediverse post.
+        </a>
+      )}
     </div>
   );
 }
