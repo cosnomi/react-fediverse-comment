@@ -20,4 +20,4 @@ Insert `<FediverseCommentSection>` tag to your blog template with proper attribu
 
 ## Acknowledgement
 
-This work is inspired by (Carl's article Adding comments to your static blog with Mastodon)[https://carlschwan.eu/2020/12/29/adding-comments-to-your-static-blog-with-mastodon/].
+This work is inspired by [this Carl's article: Adding comments to your static blog with Mastodon](https://carlschwan.eu/2020/12/29/adding-comments-to-your-static-blog-with-mastodon/).
