@@ -1,7 +1,8 @@
 {
   "name": "react-fediverse-comment",
   "version": "0.0.1",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "author": "cosnomi",
   "license": "MIT",
   "private": false,
@@ -19,7 +20,8 @@
     "dompurify": "^2.2.6"
   },
   "scripts": {
-    "prepare": "yarn build",
+    "prepare": "npm run build",
     "build": "npx tsc"
-  }
+  },
+  "files": ["dist", "style", "index.js", "README.md", "package.json"]
 }

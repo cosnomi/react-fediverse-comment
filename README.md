@@ -2,7 +2,8 @@ A react component that shows replies to the fediverse post as comments
 
 ## Can I use this plugin?
 
-Probably you don't want to. This package is so unstable that you may find it hard to use in production.
+You can do so under MIT license, but presumably you don't want to.
+This package is so unstable that you may find it hard to use in production.
 
 ## TODO
 
@@ -16,3 +17,7 @@ Probably you don't want to. This package is so unstable that you may find it har
 ## Usage
 
 Insert `<FediverseCommentSection>` tag to your blog template with proper attributes. Import default stylesheet if you like.
+
+## Acknowledgement
+
+This work is inspired by (Carl's article Adding comments to your static blog with Mastodon)[https://carlschwan.eu/2020/12/29/adding-comments-to-your-static-blog-with-mastodon/].
