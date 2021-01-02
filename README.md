@@ -8,10 +8,11 @@ This package is so unstable that you may find it hard to use in production.
 ## TODO
 
 - [ ] Refactor
+- [ ] Test
 - [ ] Allow build-time fetch of root post
-- [ ] Allow passing root post url explicitly
 - [ ] Refine default design
 - [ ] Add error handling
+- [ ] Add documentation
 - [ ] Support more fediverse systems (currently working on Pleroma, and maybe Mastodon)
 
 ## Usage
