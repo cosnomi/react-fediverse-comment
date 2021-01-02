@@ -13,18 +13,30 @@ export type Comment = {
   visibility: string; // TODO: enum?
   isRoot: boolean;
 };
+
+export type RootPostQuery = {
+  articleUrl: string;
+  authorId: string;
+};
+export type RootPost = string | RootPostQuery;
+
 export async function fetchCommentList(
   apiRootEndpoint: string,
-  authorId: string,
-  articleUrl: string
+  rootPost: RootPost
 ): Promise<Comment[]> {
-  const authorStatusesEndpoint = `${apiRootEndpoint}/accounts/${authorId}/statuses`;
-  console.log(
-    `Fetching root post from ${authorStatusesEndpoint} (articleUrl: ${articleUrl})`
-  );
-  const rootStatuses = await fetchRootPost(authorStatusesEndpoint, articleUrl);
-  // TODO: Support multiple root status? For now only use the first one
-
+  let rootStatuses;
+  if (typeof rootPost === "string") {
+    rootStatuses = [await (await fetch(rootPost)).json()];
+  } else {
+    const { articleUrl, authorId } = rootPost;
+    if (!authorId || !articleUrl) {
+      console.error("both aurhotId and articleUrl must be specified");
+      return [];
+    }
+    const authorStatusesEndpoint = `${apiRootEndpoint}/accounts/${authorId}/statuses`;
+    rootStatuses = await fetchRootPost(authorStatusesEndpoint, articleUrl);
+    // TODO: Support multiple root status? For now only use the first one
+  }
   if (rootStatuses.length == 0) {
     return [];
   }
@@ -33,9 +45,6 @@ export async function fetchCommentList(
   const context = await (
     await fetch(`${apiRootEndpoint}/statuses/${rootStatus.id}/context`)
   ).json();
-
-  console.log(`fetched`);
-  console.log(context);
 
   const parsedRootComment: Comment = {
     ...parseComment(rootStatus),

@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Comment, fetchCommentList } from "./comment";
+import { Comment, fetchCommentList, RootPost } from "./comment";
 
 type Props = {
   apiRootEndpoint: string;
-  authorId: string;
-  articleUrl: string;
+  rootPost: RootPost;
 };
 
 export function FediverseCommentSection(props: Props) {
@@ -14,8 +13,7 @@ export function FediverseCommentSection(props: Props) {
       if (!comments) {
         const comments = await fetchCommentList(
           props.apiRootEndpoint,
-          props.authorId,
-          props.articleUrl
+          props.rootPost
         );
         //.filter((c) => c.visibility === "public");
         setComments(comments);
@@ -51,7 +49,6 @@ type CardProps = {
 function CommentCard(props: CardProps) {
   const comment = props.comment;
   const isArticleAuthor = props.comment.userUrl === props.articleAuthorUserUrl;
-  console.log(`avater: ${comment.avaterUrl}`);
   return (
     <div
       className={`fediverse-comment${comment.isRoot ? " root-comment" : ""}`}
