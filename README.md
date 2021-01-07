@@ -24,8 +24,10 @@ Pass the root post API endpoint like this.
 ```
 <FediverseCommentSection apiRootEndpoint="https://social.cosnomi.com/api/v1" rootPost="https://social.cosnomi.com/api/v1/statuses/A2rRxmPWzrYPouduO8">
 ```
-`rootPost` is an API endpoint url of the root status.
-`apiRootEndpoint` is a base url of the API endpoint.
+- `rootPost` is an API endpoint url of the root status.
+- `apiRootEndpoint` is a base url of the API endpoint.
+
+Currently, this plugin only supports Pleroma (and probably Mastodon). Support for other fediverse systems is being considered.
 
 I know these parameters are redundant. They will be updated soon.
 
@@ -37,8 +39,8 @@ I have wrote [a blog article about this plugin](https://blog.cosnomi.com/posts/f
 ## Contribution
 
 Contributions are highly appreciated.
-If you found a bug, raise an issue.
-Minor code changes and documentation updates should be basically suggested as PR.
-Major code changes (which typically includes breaking changes) should be first discussed in Issue.  
+- If you found a bug, raise an issue.
+- Minor code changes and documentation updates should be basically suggested as PR.
+- Major code changes (which typically includes breaking changes) should be first discussed in Issue.  
 
 Thank you!
