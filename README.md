@@ -36,9 +36,9 @@ I have wrote [a blog article about this plugin](https://blog.cosnomi.com/posts/f
 
 ## Contribution
 
-Contribution will be highly appreciated.  
-If you found a bug, raise an issue.  
-Minor code changes and documentation updates should be basically suggested as PR.  
+Contributions are highly appreciated.
+If you found a bug, raise an issue.
+Minor code changes and documentation updates should be basically suggested as PR.
 Major code changes (which typically includes breaking changes) should be first discussed in Issue.  
 
 Thank you!
