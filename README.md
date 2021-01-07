@@ -20,7 +20,7 @@ This package is so unstable that you may find it hard to use in production.
 Insert `<FediverseCommentSection>` tag to your blog template with proper attributes. Import default stylesheet if you like.
 
 <!-- (1) If you want to specify the root post url expilcitly (recommended) -->
-Pass the root post context endpoint like this.
+Pass the root post API endpoint like this.
 ```
 <FediverseCommentSection apiRootEndpoint="https://social.cosnomi.com/api/v1" rootPost="https://social.cosnomi.com/api/v1/statuses/A2rRxmPWzrYPouduO8">
 ```
