@@ -34,3 +34,11 @@ I know these parameters are redundant. They will be updated soon.
 This work is inspired by [this Carl's article: Adding comments to your static blog with Mastodon](https://carlschwan.eu/2020/12/29/adding-comments-to-your-static-blog-with-mastodon/).
 I have wrote [a blog article about this plugin](https://blog.cosnomi.com/posts/fedi-comment/).
 
+## Contribution
+
+Contribution will be highly appreciated.  
+If you found a bug, raise an issue.  
+Minor code changes and documentation updates should be basically suggested as PR.  
+Major code changes (which typically includes breaking changes) should be first discussed in Issue.  
+
+Thank you!
